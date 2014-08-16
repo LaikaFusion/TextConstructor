@@ -1,21 +1,46 @@
 <html>
 	<head>
+		<style>
+
+			td{
+				font-size: :36pt;
+				text-align: center;
+					
+
+			}
+
+			.display{
+			
+				font-size: 36pt;
+
+			}
+		</style>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>		
 		<script>
-		var editchar ="";
-		function characterget(){
-			var formfields = document.getElementById("Theonlyform");
-			var gotchar = formfields.elements[0].value;
-			document.getElementById('curchar').innerHTML=gotchar;
-			editchar =gotchar;
-		}
-		function addcharacter(clicked_id){
-			var resultchar = editchar.concat("&#x3"+clicked_id);
-			editchar = resultchar;
-			document.getElementById('curchar').innerHTML=resultchar;
-		}
-	</script>
-		</head>
+
+			var editchar ="";
+
+			function characterget(){
+
+				var formfields = document.getElementById("Theonlyform");
+				var gotchar = formfields.elements[0].value;
+				document.getElementById('curchar').innerHTML=gotchar;
+				editchar =gotchar;
+
+			}
+
+
+
+			function addcharacter(clicked_id){
+
+				var resultchar = editchar.concat(clicked_id);
+				editchar = resultchar;
+				document.getElementById('curchar').innerHTML=resultchar;
+
+			}
+
+		</script>
+	</head>
 	<body>
 		<form id="Theonlyform" >
 			Starting Character: <input maxlength="1" type="text"  pattern="[a-z\d]*" onkeyup="characterget()"><br>
@@ -23,139 +48,140 @@
 		<p>
 				Limited to letters only currently
 		</p>
-		<p>
-		Current character:           <span id="curchar"></span>
-		</p>
+		
 		<p id="box1"></p>
-		<table border="1" cellspacing="0" cellpadding="5">
+		<table border="1" cellspacing="0" cellpadding="10">
 		<tr>
-			<td id="00" onClick="addcharacter(this.id)" style="width:20pt">&#x300;</td>
-			<td id="01" onClick="addcharacter(this.id)" style="width:20pt">&#x301;</td>
-			<td id="02" onClick="addcharacter(this.id)" style="width:20pt">&#x302;</td>
-			<td id="03" onClick="addcharacter(this.id)" style="width:20pt">&#x303;</td>
-			<td id="04" onClick="addcharacter(this.id)" style="width:20pt">&#x304;</td>
-			<td id="05" onClick="addcharacter(this.id)" style="width:20pt">&#x305;</td>
-			<td id="06" onClick="addcharacter(this.id)" style="width:20pt">&#x306;</td>
-			<td id="07" onClick="addcharacter(this.id)" style="width:20pt">&#x307;</td>
-			<td id="08" onClick="addcharacter(this.id)" style="width:20pt">&#x308;</td>
-			<td id="09" onClick="addcharacter(this.id)" style="width:20pt">&#x309;</td>
-			<td id="0A" onClick="addcharacter(this.id)" style="width:20pt">&#x30A;</td>
-			<td id="0B" onClick="addcharacter(this.id)" style="width:20pt">&#x30B;</td>
-			<td id="0C" onClick="addcharacter(this.id)" style="width:20pt">&#x30C;</td>
-			<td id="0D" onClick="addcharacter(this.id)" style="width:20pt">&#x30D;</td>
-			<td id="0E" onClick="addcharacter(this.id)" style="width:20pt">&#x30E;</td>
-			<td id="0F" onClick="addcharacter(this.id)" style="width:20pt">&#x30F;</td>
+			<td id="&#x300" onClick="addcharacter(this.id)">&#x300;</td>
+			<td id="&#x301" onClick="addcharacter(this.id)">&#x301;</td>
+			<td id="&#x302" onClick="addcharacter(this.id)">&#x302;</td>
+			<td id="&#x303" onClick="addcharacter(this.id)">&#x303;</td>
+			<td id="&#x304" onClick="addcharacter(this.id)">&#x304;</td>
+			<td id="&#x305" onClick="addcharacter(this.id)">&#x305;</td>
+			<td id="&#x306" onClick="addcharacter(this.id)">&#x306;</td>
+			<td id="&#x307" onClick="addcharacter(this.id)">&#x307;</td>
+			<td id="&#x308" onClick="addcharacter(this.id)">&#x308;</td>
+			<td id="&#x309" onClick="addcharacter(this.id)">&#x309;</td>
+			<td id="&#x30A" onClick="addcharacter(this.id)">&#x30A;</td>
+			<td id="&#x30B" onClick="addcharacter(this.id)">&#x30B;</td>
+			<td id="&#x30C" onClick="addcharacter(this.id)">&#x30C;</td>
+			<td id="&#x30D" onClick="addcharacter(this.id)">&#x30D;</td>
+			<td id="&#x30E" onClick="addcharacter(this.id)">&#x30E;</td>
+			<td id="&#x30F" onClick="addcharacter(this.id)">&#x30F;</td>
 		</tr>
 		<tr>
-			<td id="10" onClick="addcharacter(this.id)" style="width:20pt">&#x310;</td>
-			<td id="11" onClick="addcharacter(this.id)" style="width:20pt">&#x311;</td>
-			<td id="12" onClick="addcharacter(this.id)" style="width:20pt">&#x312;</td>
-			<td id="13" onClick="addcharacter(this.id)" style="width:20pt">&#x313;</td>
-			<td id="14" onClick="addcharacter(this.id)" style="width:20pt">&#x314;</td>
-			<td id="15" onClick="addcharacter(this.id)" style="width:20pt">&#x315;</td>
-			<td id="16" onClick="addcharacter(this.id)" style="width:20pt">&#x316;</td>
-			<td id="17" onClick="addcharacter(this.id)" style="width:20pt">&#x317;</td>
-			<td id="18" onClick="addcharacter(this.id)" style="width:20pt">&#x318;</td>
-			<td id="19" onClick="addcharacter(this.id)" style="width:20pt">&#x319;</td>
-			<td id="1A" onClick="addcharacter(this.id)" style="width:20pt">&#x31A;</td>
-			<td id="1B" onClick="addcharacter(this.id)" style="width:20pt">&#x31B;</td>
-			<td id="1C" onClick="addcharacter(this.id)" style="width:20pt">&#x31C;</td>
-			<td id="1D" onClick="addcharacter(this.id)" style="width:20pt">&#x31D;</td>
-			<td id="1E" onClick="addcharacter(this.id)" style="width:20pt">&#x31E;</td>
-			<td id="1F" onClick="addcharacter(this.id)" style="width:20pt">&#x31F;</td>
+			<td id="&#x310" onClick="addcharacter(this.id)">&#x310;</td>
+			<td id="&#x311" onClick="addcharacter(this.id)">&#x311;</td>
+			<td id="&#x312" onClick="addcharacter(this.id)">&#x312;</td>
+			<td id="&#x313" onClick="addcharacter(this.id)">&#x313;</td>
+			<td id="&#x314" onClick="addcharacter(this.id)">&#x314;</td>
+			<td id="&#x315" onClick="addcharacter(this.id)">&#x315;</td>
+			<td id="&#x316" onClick="addcharacter(this.id)">&#x316;</td>
+			<td id="&#x317" onClick="addcharacter(this.id)">&#x317;</td>
+			<td id="&#x318" onClick="addcharacter(this.id)">&#x318;</td>
+			<td id="&#x319" onClick="addcharacter(this.id)">&#x319;</td>
+			<td id="&#x31A" onClick="addcharacter(this.id)">&#x31A;</td>
+			<td id="&#x31B" onClick="addcharacter(this.id)">&#x31B;</td>
+			<td id="&#x31C" onClick="addcharacter(this.id)">&#x31C;</td>
+			<td id="&#x31D" onClick="addcharacter(this.id)">&#x31D;</td>
+			<td id="&#x31E" onClick="addcharacter(this.id)">&#x31E;</td>
+			<td id="&#x31F" onClick="addcharacter(this.id)">&#x31F;</td>
 		</tr>
 		<tr>
-			<td id="20" onClick="addcharacter(this.id)" style="width:20pt">&#x320;</td>
-			<td id="21" onClick="addcharacter(this.id)" style="width:20pt">&#x321;</td>
-			<td id="22" onClick="addcharacter(this.id)" style="width:20pt">&#x322;</td>
-			<td id="23" onClick="addcharacter(this.id)" style="width:20pt">&#x323;</td>
-			<td id="24" onClick="addcharacter(this.id)" style="width:20pt">&#x324;</td>
-			<td id="25" onClick="addcharacter(this.id)" style="width:20pt">&#x325;</td>
-			<td id="26" onClick="addcharacter(this.id)" style="width:20pt">&#x326;</td>
-			<td id="27" onClick="addcharacter(this.id)" style="width:20pt">&#x327;</td>
-			<td id="28" onClick="addcharacter(this.id)" style="width:20pt">&#x328;</td>
-			<td id="29" onClick="addcharacter(this.id)" style="width:20pt">&#x329;</td>
-			<td id="2A" onClick="addcharacter(this.id)" style="width:20pt">&#x32A;</td>
-			<td id="2B" onClick="addcharacter(this.id)" style="width:20pt">&#x32B;</td>
-			<td id="2C" onClick="addcharacter(this.id)" style="width:20pt">&#x32C;</td>
-			<td id="2D" onClick="addcharacter(this.id)" style="width:20pt">&#x32D;</td>
-			<td id="2E" onClick="addcharacter(this.id)" style="width:20pt">&#x32E;</td>
-			<td id="2F" onClick="addcharacter(this.id)" style="width:20pt">&#x32F;</td>
+			<td id="&#x320" onClick="addcharacter(this.id)">&#x320;</td>
+			<td id="&#x321" onClick="addcharacter(this.id)">&#x321;</td>
+			<td id="&#x322" onClick="addcharacter(this.id)">&#x322;</td>
+			<td id="&#x323" onClick="addcharacter(this.id)">&#x323;</td>
+			<td id="&#x324" onClick="addcharacter(this.id)">&#x324;</td>
+			<td id="&#x325" onClick="addcharacter(this.id)">&#x325;</td>
+			<td id="&#x326" onClick="addcharacter(this.id)">&#x326;</td>
+			<td id="&#x327" onClick="addcharacter(this.id)">&#x327;</td>
+			<td id="&#x328" onClick="addcharacter(this.id)">&#x328;</td>
+			<td id="&#x329" onClick="addcharacter(this.id)">&#x329;</td>
+			<td id="&#x32A" onClick="addcharacter(this.id)">&#x32A;</td>
+			<td id="&#x32B" onClick="addcharacter(this.id)">&#x32B;</td>
+			<td id="&#x32C" onClick="addcharacter(this.id)">&#x32C;</td>
+			<td id="&#x32D" onClick="addcharacter(this.id)">&#x32D;</td>
+			<td id="&#x32E" onClick="addcharacter(this.id)">&#x32E;</td>
+			<td id="&#x32F" onClick="addcharacter(this.id)">&#x32F;</td>
 		</tr>
 		<tr>
-			<td id="30" onClick="addcharacter(this.id)" style="width:20pt">&#x330;</td>
-			<td id="31" onClick="addcharacter(this.id)" style="width:20pt">&#x331;</td>
-			<td id="32" onClick="addcharacter(this.id)" style="width:20pt">&#x332;</td>
-			<td id="33" onClick="addcharacter(this.id)" style="width:20pt">&#x333;</td>
-			<td id="34" onClick="addcharacter(this.id)" style="width:20pt">&#x334;</td>
-			<td id="35" onClick="addcharacter(this.id)" style="width:20pt">&#x335;</td>
-			<td id="36" onClick="addcharacter(this.id)" style="width:20pt">&#x336;</td>
-			<td id="37" onClick="addcharacter(this.id)" style="width:20pt">&#x337;</td>
-			<td id="38" onClick="addcharacter(this.id)" style="width:20pt">&#x338;</td>
-			<td id="39" onClick="addcharacter(this.id)" style="width:20pt">&#x339;</td>
-			<td id="3A" onClick="addcharacter(this.id)" style="width:20pt">&#x33A;</td>
-			<td id="3B" onClick="addcharacter(this.id)" style="width:20pt">&#x33B;</td>
-			<td id="3C" onClick="addcharacter(this.id)" style="width:20pt">&#x33C;</td>
-			<td id="3D" onClick="addcharacter(this.id)" style="width:20pt">&#x33D;</td>
-			<td id="3E" onClick="addcharacter(this.id)" style="width:20pt">&#x33E;</td>
-			<td id="3F" onClick="addcharacter(this.id)" style="width:20pt">&#x33F;</td>
+			<td id="&#x330" onClick="addcharacter(this.id)">&#x330;</td>
+			<td id="&#x331" onClick="addcharacter(this.id)">&#x331;</td>
+			<td id="&#x332" onClick="addcharacter(this.id)">&#x332;</td>
+			<td id="&#x333" onClick="addcharacter(this.id)">&#x333;</td>
+			<td id="&#x334" onClick="addcharacter(this.id)">&#x334;</td>
+			<td id="&#x335" onClick="addcharacter(this.id)">&#x335;</td>
+			<td id="&#x336" onClick="addcharacter(this.id)">&#x336;</td>
+			<td id="&#x337" onClick="addcharacter(this.id)">&#x337;</td>
+			<td id="&#x338" onClick="addcharacter(this.id)">&#x338;</td>
+			<td id="&#x339" onClick="addcharacter(this.id)">&#x339;</td>
+			<td id="&#x33A" onClick="addcharacter(this.id)">&#x33A;</td>
+			<td id="&#x33B" onClick="addcharacter(this.id)">&#x33B;</td>
+			<td id="&#x33C" onClick="addcharacter(this.id)">&#x33C;</td>
+			<td id="&#x33D" onClick="addcharacter(this.id)">&#x33D;</td>
+			<td id="&#x33E" onClick="addcharacter(this.id)">&#x33E;</td>
+			<td id="&#x33F" onClick="addcharacter(this.id)">&#x33F;</td>
 		</tr>
 		<tr>
-			<td id="40" onClick="addcharacter(this.id)" style="width:20pt">&#x340;</td>
-			<td id="41" onClick="addcharacter(this.id)" style="width:20pt">&#x341;</td>
-			<td id="42" onClick="addcharacter(this.id)" style="width:20pt">&#x342;</td>
-			<td id="43" onClick="addcharacter(this.id)" style="width:20pt">&#x343;</td>
-			<td id="44" onClick="addcharacter(this.id)" style="width:20pt">&#x344;</td>
-			<td id="45" onClick="addcharacter(this.id)" style="width:20pt">&#x345;</td>
-			<td id="46" onClick="addcharacter(this.id)" style="width:20pt">&#x346;</td>
-			<td id="47" onClick="addcharacter(this.id)" style="width:20pt">&#x347;</td>
-			<td id="48" onClick="addcharacter(this.id)" style="width:20pt">&#x348;</td>
-			<td id="49" onClick="addcharacter(this.id)" style="width:20pt">&#x349;</td>
-			<td id="4A" onClick="addcharacter(this.id)" style="width:20pt">&#x34A;</td>
-			<td id="4B" onClick="addcharacter(this.id)" style="width:20pt">&#x34B;</td>
-			<td id="4C" onClick="addcharacter(this.id)" style="width:20pt">&#x34C;</td>
-			<td id="4D" onClick="addcharacter(this.id)" style="width:20pt">&#x34D;</td>
-			<td id="4E" onClick="addcharacter(this.id)" style="width:20pt">&#x34E;</td>
-			<td id="4F" onClick="addcharacter(this.id)" style="width:20pt">&#x34F;</td>
+			<td id="&#x340" onClick="addcharacter(this.id)">&#x340;</td>
+			<td id="&#x341" onClick="addcharacter(this.id)">&#x341;</td>
+			<td id="&#x342" onClick="addcharacter(this.id)">&#x342;</td>
+			<td id="&#x343" onClick="addcharacter(this.id)">&#x343;</td>
+			<td id="&#x344" onClick="addcharacter(this.id)">&#x344;</td>
+			<td id="&#x345" onClick="addcharacter(this.id)">&#x345;</td>
+			<td id="&#x346" onClick="addcharacter(this.id)">&#x346;</td>
+			<td id="&#x347" onClick="addcharacter(this.id)">&#x347;</td>
+			<td id="&#x348" onClick="addcharacter(this.id)">&#x348;</td>
+			<td id="&#x349" onClick="addcharacter(this.id)">&#x349;</td>
+			<td id="&#x34A" onClick="addcharacter(this.id)">&#x34A;</td>
+			<td id="&#x34B" onClick="addcharacter(this.id)">&#x34B;</td>
+			<td id="&#x34C" onClick="addcharacter(this.id)">&#x34C;</td>
+			<td id="&#x34D" onClick="addcharacter(this.id)">&#x34D;</td>
+			<td id="&#x34E" onClick="addcharacter(this.id)">&#x34E;</td>
+			<td id="&#x34F" onClick="addcharacter(this.id)">&#x34F;</td>
 		</tr>
 		<tr>
-			<td id="50" onClick="addcharacter(this.id)" style="width:20pt">&#x350;</td>
-			<td id="51" onClick="addcharacter(this.id)" style="width:20pt">&#x351;</td>
-			<td id="52" onClick="addcharacter(this.id)" style="width:20pt">&#x352;</td>
-			<td id="53" onClick="addcharacter(this.id)" style="width:20pt">&#x353;</td>
-			<td id="54" onClick="addcharacter(this.id)" style="width:20pt">&#x354;</td>
-			<td id="55" onClick="addcharacter(this.id)" style="width:20pt">&#x355;</td>
-			<td id="56" onClick="addcharacter(this.id)" style="width:20pt">&#x356;</td>
-			<td id="57" onClick="addcharacter(this.id)" style="width:20pt">&#x357;</td>
-			<td id="58" onClick="addcharacter(this.id)" style="width:20pt">&#x358;</td>
-			<td id="59" onClick="addcharacter(this.id)" style="width:20pt">&#x359;</td>
-			<td id="5A" onClick="addcharacter(this.id)" style="width:20pt">&#x35A;</td>
-			<td id="5B" onClick="addcharacter(this.id)" style="width:20pt">&#x35B;</td>
-			<td id="5C" onClick="addcharacter(this.id)" style="width:20pt">&#x35C;</td>
-			<td id="5D" onClick="addcharacter(this.id)" style="width:20pt">&#x35D;</td>
-			<td id="5E" onClick="addcharacter(this.id)" style="width:20pt">&#x35E;</td>
-			<td id="5F" onClick="addcharacter(this.id)" style="width:20pt">&#x35F;</td>
+			<td id="&#x350" onClick="addcharacter(this.id)">&#x350;</td>
+			<td id="&#x351" onClick="addcharacter(this.id)">&#x351;</td>
+			<td id="&#x352" onClick="addcharacter(this.id)">&#x352;</td>
+			<td id="&#x353" onClick="addcharacter(this.id)">&#x353;</td>
+			<td id="&#x354" onClick="addcharacter(this.id)">&#x354;</td>
+			<td id="&#x355" onClick="addcharacter(this.id)">&#x355;</td>
+			<td id="&#x356" onClick="addcharacter(this.id)">&#x356;</td>
+			<td id="&#x357" onClick="addcharacter(this.id)">&#x357;</td>
+			<td id="&#x358" onClick="addcharacter(this.id)">&#x358;</td>
+			<td id="&#x359" onClick="addcharacter(this.id)">&#x359;</td>
+			<td id="&#x35A" onClick="addcharacter(this.id)">&#x35A;</td>
+			<td id="&#x35B" onClick="addcharacter(this.id)">&#x35B;</td>
+			<td id="&#x35C" onClick="addcharacter(this.id)">&#x35C;</td>
+			<td id="&#x35D" onClick="addcharacter(this.id)">&#x35D;</td>
+			<td id="&#x35E" onClick="addcharacter(this.id)">&#x35E;</td>
+			<td id="&#x35F" onClick="addcharacter(this.id)">&#x35F;</td>
 		</tr>
 		<tr>
-			<td id="60" onClick="addcharacter(this.id)" style="width:20pt">&#x360;</td>
-			<td id="61" onClick="addcharacter(this.id)" style="width:20pt">&#x361;</td>
-			<td id="62" onClick="addcharacter(this.id)" style="width:20pt">&#x362;</td>
-			<td id="63" onClick="addcharacter(this.id)" style="width:20pt">&#x363;</td>
-			<td id="64" onClick="addcharacter(this.id)" style="width:20pt">&#x364;</td>
-			<td id="65" onClick="addcharacter(this.id)" style="width:20pt">&#x365;</td>
-			<td id="66" onClick="addcharacter(this.id)" style="width:20pt">&#x366;</td>
-			<td id="67" onClick="addcharacter(this.id)" style="width:20pt">&#x367;</td>
-			<td id="68" onClick="addcharacter(this.id)" style="width:20pt">&#x368;</td>
-			<td id="69" onClick="addcharacter(this.id)" style="width:20pt">&#x369;</td>
-			<td id="6A" onClick="addcharacter(this.id)" style="width:20pt">&#x36A;</td>
-			<td id="6B" onClick="addcharacter(this.id)" style="width:20pt">&#x36B;</td>
-			<td id="6C" onClick="addcharacter(this.id)" style="width:20pt">&#x36C;</td>
-			<td id="6D" onClick="addcharacter(this.id)" style="width:20pt">&#x36D;</td>
-			<td id="6E" onClick="addcharacter(this.id)" style="width:20pt">&#x36E;</td>
-			<td id="6F" onClick="addcharacter(this.id)" style="width:20pt">&#x36F;</td>
+			<td id="&#x360" onClick="addcharacter(this.id)">&#x360;</td>
+			<td id="&#x361" onClick="addcharacter(this.id)">&#x361;</td>
+			<td id="&#x362" onClick="addcharacter(this.id)">&#x362;</td>
+			<td id="&#x363" onClick="addcharacter(this.id)">&#x363;</td>
+			<td id="&#x364" onClick="addcharacter(this.id)">&#x364;</td>
+			<td id="&#x365" onClick="addcharacter(this.id)">&#x365;</td>
+			<td id="&#x366" onClick="addcharacter(this.id)">&#x366;</td>
+			<td id="&#x367" onClick="addcharacter(this.id)">&#x367;</td>
+			<td id="&#x368" onClick="addcharacter(this.id)">&#x368;</td>
+			<td id="&#x369" onClick="addcharacter(this.id)">&#x369;</td>
+			<td id="&#x36A" onClick="addcharacter(this.id)">&#x36A;</td>
+			<td id="&#x36B" onClick="addcharacter(this.id)">&#x36B;</td>
+			<td id="&#x36C" onClick="addcharacter(this.id)">&#x36C;</td>
+			<td id="&#x36D" onClick="addcharacter(this.id)">&#x36D;</td>
+			<td id="&#x36E" onClick="addcharacter(this.id)">&#x36E;</td>
+			<td id="&#x36F" onClick="addcharacter(this.id)">&#x36F;</td>
 		</tr>
-
-
 		</table>
+		<div class="display">	
+			<p>
+				Current character: <span id="curchar"></span>
+			</p>
+		</div>
 	</body>
 </html>
