@@ -10,11 +10,12 @@
 				font-size: 36pt
 			}
 		</style>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>		
 		<script>
 		
 			var editchar ="";
 			var editstring;
+			var editarray=[];
 			
 			function characterget(){
 			
@@ -31,32 +32,45 @@
 			for (i = 0; i < editstring.length; i++) { 
 				var iplusone = i+1;
 				if( i%15 == 0 ){
-				editchar="<tr><td id='char "+i+"'>"+editstring[i]+"</td>" ;
+				editchar="<tr><td id='char "+i+"'>"+editstring[i]+"<br><input type='checkbox' id='checkbox"+[i]+"' value='"+editstring[i]+"'></td>" ;
 				var tempstring=stringfordisplay.concat(editchar);
 				stringfordisplay = tempstring;
 				}
 				else if ( iplusone%15 == 0 ){
-				editchar="<td id='char "+i+"'>"+editstring[i]+"</td></tr>" ;
+				editchar="<td id='char "+i+"'>"+editstring[i]+"><br><input type='checkbox' id='checkbox"+[i]+"' value='"+editstring[i]+"'></td></tr>" ;
 				var tempstring=stringfordisplay.concat(editchar);
 				stringfordisplay = tempstring;
 				}
 				else{
 				
-				editchar="<td id='char "+i+"'>"+editstring[i]+"</td>" ;
+				editchar="<td id='char "+i+"'>"+editstring[i]+"<br><input type='checkbox' id='checkbox"+[i]+"' value='"+editstring[i]+"'></td>" ;
 				var tempstring=stringfordisplay.concat(editchar);
 				stringfordisplay = tempstring;
 				}
 				document.getElementById('curchar').innerHTML="<table border='' cellspacing='0' cellpadding='10'><tr>"+stringfordisplay+"</tr></table>";
+				
 				}
 			}
 
+			function checkedarray(){
+				var n = $( "input:checked" ).length;
+					for (var c = 0; c < n; c++) {
+				
+					console.log(document.getElementById("checkbox"+c).value);
+					editarray.push(	document.getElementById("checkbox"+c).value);
+					
+					}
+			}
+			
+			
+			
 			
 			function addcharacter(clicked_id){
 
 				var resultchar = editchar.concat(clicked_id);
 				editchar = resultchar;
 				document.getElementById('curchar').innerHTML=resultchar;
-
+				
 			}
 			
 			$(function() {
@@ -216,9 +230,9 @@
 				Current character: <span id="curchar"></span>
 			</p>
 			<p>
-			copible version: <span id="copydisplay"></span>
+			Alt. version: <span id="copydisplay"></span>
 			</p>
 		</div>
-		
+	
 	</body>
 </html>
