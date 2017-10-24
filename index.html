@@ -1,238 +1,59 @@
-<html>
-	<head>
-		<style>
-			td{
-				font-size: :36pt;
-				text-align: center;
-			}
-			
-			.display{
-				font-size: 36pt
-			}
-		</style>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>		
-		<script>
-		
-			var editchar ="";
-			var editstring;
-			var editarray=[];
-			
-			function characterget(){
-			
-				var formfields = document.getElementById("Theonlyform");
-				var gotstring = formfields.elements[0].value;
-				editstring = gotstring.split("");
-				editchar =gotstring;
-				stringdisplay();
-			}
-			
-			function stringdisplay(){
-				var stringfordisplay ="";
-				
-			for (i = 0; i < editstring.length; i++) { 
-				var iplusone = i+1;
-				if( i%15 == 0 ){
-				editchar="<tr><td id='char "+i+"'>"+editstring[i]+"<br><input type='checkbox' id='checkbox"+[i]+"' value='"+editstring[i]+"'></td>" ;
-				var tempstring=stringfordisplay.concat(editchar);
-				stringfordisplay = tempstring;
-				}
-				else if ( iplusone%15 == 0 ){
-				editchar="<td id='char "+i+"'>"+editstring[i]+"><br><input type='checkbox' id='checkbox"+[i]+"' value='"+editstring[i]+"'></td></tr>" ;
-				var tempstring=stringfordisplay.concat(editchar);
-				stringfordisplay = tempstring;
-				}
-				else{
-				
-				editchar="<td id='char "+i+"'>"+editstring[i]+"<br><input type='checkbox' id='checkbox"+[i]+"' value='"+editstring[i]+"'></td>" ;
-				var tempstring=stringfordisplay.concat(editchar);
-				stringfordisplay = tempstring;
-				}
-				document.getElementById('curchar').innerHTML="<table border='' cellspacing='0' cellpadding='10'><tr>"+stringfordisplay+"</tr></table>";
-				
-				}
-			}
+<!doctype html>
 
-			function checkedarray(){
-				var n = $( "input:checked" ).length;
-					for (var c = 0; c < n; c++) {
-				
-					console.log(document.getElementById("checkbox"+c).value);
-					editarray.push(	document.getElementById("checkbox"+c).value);
-					
-					}
-			}
-			
-			
-			
-			
-			function addcharacter(clicked_id){
+<html lang="en">
+<head>
+  <meta charset="utf-8">
 
-				var resultchar = editchar.concat(clicked_id);
-				editchar = resultchar;
-				document.getElementById('curchar').innerHTML=resultchar;
-				
-			}
-			
-			$(function() {
-				$('.toggler').click(function() {
-					$(this).find('div').slideToggle();
-				});
-			});
+  <title>TextFucker.exe</title>
+  <meta name="description" content="Messes with letters">
+  <meta name="author" content="Laika">
 
-		</script>
-	</head>
-	<body>
-		<form id="Theonlyform" >
-			Starting Character: <input maxlength="" type="text"  pattern="[a-z\d]*" onkeyup="characterget()"><br>
-		</form> 
-		
-		<p>
-				This works best in Chrome. Firefox has a delay before it will render the character (it won't look fucked up unless you wait)
-		</p>
-		
-		<p id="box1"></p>
-			<div class="mainchars">
-			<table border="1" cellspacing="0" cellpadding="10">
-				<tr>
-					<td colspan="16"> Standard Set (Will work in most places) </td>
-				</tr>
-				<tr>
-					<td id="&#x300" onClick="addcharacter(this.id)">&#x300;</td>
-					<td id="&#x301" onClick="addcharacter(this.id)">&#x301;</td>
-					<td id="&#x302" onClick="addcharacter(this.id)">&#x302;</td>
-					<td id="&#x303" onClick="addcharacter(this.id)">&#x303;</td>
-					<td id="&#x304" onClick="addcharacter(this.id)">&#x304;</td>
-					<td id="&#x305" onClick="addcharacter(this.id)">&#x305;</td>
-					<td id="&#x306" onClick="addcharacter(this.id)">&#x306;</td>
-					<td id="&#x307" onClick="addcharacter(this.id)">&#x307;</td>
-					<td id="&#x308" onClick="addcharacter(this.id)">&#x308;</td>
-					<td id="&#x309" onClick="addcharacter(this.id)">&#x309;</td>
-					<td id="&#x30A" onClick="addcharacter(this.id)">&#x30A;</td>
-					<td id="&#x30B" onClick="addcharacter(this.id)">&#x30B;</td>
-					<td id="&#x30C" onClick="addcharacter(this.id)">&#x30C;</td>
-					<td id="&#x30D" onClick="addcharacter(this.id)">&#x30D;</td>
-					<td id="&#x30E" onClick="addcharacter(this.id)">&#x30E;</td>
-					<td id="&#x30F" onClick="addcharacter(this.id)">&#x30F;</td>
-				</tr>
-				<tr>
-					<td id="&#x310" onClick="addcharacter(this.id)">&#x310;</td>
-					<td id="&#x311" onClick="addcharacter(this.id)">&#x311;</td>
-					<td id="&#x312" onClick="addcharacter(this.id)">&#x312;</td>
-					<td id="&#x313" onClick="addcharacter(this.id)">&#x313;</td>
-					<td id="&#x314" onClick="addcharacter(this.id)">&#x314;</td>
-					<td id="&#x315" onClick="addcharacter(this.id)">&#x315;</td>
-					<td id="&#x316" onClick="addcharacter(this.id)">&#x316;</td>
-					<td id="&#x317" onClick="addcharacter(this.id)">&#x317;</td>
-					<td id="&#x318" onClick="addcharacter(this.id)">&#x318;</td>
-					<td id="&#x319" onClick="addcharacter(this.id)">&#x319;</td>
-					<td id="&#x31A" onClick="addcharacter(this.id)">&#x31A;</td>
-					<td id="&#x31B" onClick="addcharacter(this.id)">&#x31B;</td>
-					<td id="&#x31C" onClick="addcharacter(this.id)">&#x31C;</td>
-					<td id="&#x31D" onClick="addcharacter(this.id)">&#x31D;</td>
-					<td id="&#x31E" onClick="addcharacter(this.id)">&#x31E;</td>
-					<td id="&#x31F" onClick="addcharacter(this.id)">&#x31F;</td>
-				</tr>
-				<tr>
-					<td id="&#x320" onClick="addcharacter(this.id)">&#x320;</td>
-					<td id="&#x321" onClick="addcharacter(this.id)">&#x321;</td>
-					<td id="&#x322" onClick="addcharacter(this.id)">&#x322;</td>
-					<td id="&#x323" onClick="addcharacter(this.id)">&#x323;</td>
-					<td id="&#x324" onClick="addcharacter(this.id)">&#x324;</td>
-					<td id="&#x325" onClick="addcharacter(this.id)">&#x325;</td>
-					<td id="&#x326" onClick="addcharacter(this.id)">&#x326;</td>
-					<td id="&#x327" onClick="addcharacter(this.id)">&#x327;</td>
-					<td id="&#x328" onClick="addcharacter(this.id)">&#x328;</td>
-					<td id="&#x329" onClick="addcharacter(this.id)">&#x329;</td>
-					<td id="&#x32A" onClick="addcharacter(this.id)">&#x32A;</td>
-					<td id="&#x32B" onClick="addcharacter(this.id)">&#x32B;</td>
-					<td id="&#x32C" onClick="addcharacter(this.id)">&#x32C;</td>
-					<td id="&#x32D" onClick="addcharacter(this.id)">&#x32D;</td>
-					<td id="&#x32E" onClick="addcharacter(this.id)">&#x32E;</td>
-					<td id="&#x32F" onClick="addcharacter(this.id)">&#x32F;</td>
-				</tr>
-				<tr>
-					<td id="&#x330" onClick="addcharacter(this.id)">&#x330;</td>
-					<td id="&#x331" onClick="addcharacter(this.id)">&#x331;</td>
-					<td id="&#x332" onClick="addcharacter(this.id)">&#x332;</td>
-					<td id="&#x333" onClick="addcharacter(this.id)">&#x333;</td>
-					<td id="&#x334" onClick="addcharacter(this.id)">&#x334;</td>
-					<td id="&#x335" onClick="addcharacter(this.id)">&#x335;</td>
-					<td id="&#x336" onClick="addcharacter(this.id)">&#x336;</td>
-					<td id="&#x337" onClick="addcharacter(this.id)">&#x337;</td>
-					<td id="&#x338" onClick="addcharacter(this.id)">&#x338;</td>
-					<td id="&#x339" onClick="addcharacter(this.id)">&#x339;</td>
-					<td id="&#x33A" onClick="addcharacter(this.id)">&#x33A;</td>
-					<td id="&#x33B" onClick="addcharacter(this.id)">&#x33B;</td>
-					<td id="&#x33C" onClick="addcharacter(this.id)">&#x33C;</td>
-					<td id="&#x33D" onClick="addcharacter(this.id)">&#x33D;</td>
-					<td id="&#x33E" onClick="addcharacter(this.id)">&#x33E;</td>
-					<td id="&#x33F" onClick="addcharacter(this.id)">&#x33F;</td>
-				</tr>
-				<tr>
-					<td id="&#x340" onClick="addcharacter(this.id)">&#x340;</td>
-					<td id="&#x341" onClick="addcharacter(this.id)">&#x341;</td>
-					<td id="&#x342" onClick="addcharacter(this.id)">&#x342;</td>
-					<td id="&#x343" onClick="addcharacter(this.id)">&#x343;</td>
-					<td id="&#x344" onClick="addcharacter(this.id)">&#x344;</td>
-					<td id="&#x345" onClick="addcharacter(this.id)">&#x345;</td>
-					<td id="&#x346" onClick="addcharacter(this.id)">&#x346;</td>
-					<td id="&#x347" onClick="addcharacter(this.id)">&#x347;</td>
-					<td id="&#x348" onClick="addcharacter(this.id)">&#x348;</td>
-					<td id="&#x349" onClick="addcharacter(this.id)">&#x349;</td>
-					<td id="&#x34A" onClick="addcharacter(this.id)">&#x34A;</td>
-					<td id="&#x34B" onClick="addcharacter(this.id)">&#x34B;</td>
-					<td id="&#x34C" onClick="addcharacter(this.id)">&#x34C;</td>
-					<td id="&#x34D" onClick="addcharacter(this.id)">&#x34D;</td>
-					<td id="&#x34E" onClick="addcharacter(this.id)">&#x34E;</td>
-					<td id="&#x34F" onClick="addcharacter(this.id)">&#x34F;</td>
-				</tr>
-				<tr>
-					<td id="&#x350" onClick="addcharacter(this.id)">&#x350;</td>
-					<td id="&#x351" onClick="addcharacter(this.id)">&#x351;</td>
-					<td id="&#x352" onClick="addcharacter(this.id)">&#x352;</td>
-					<td id="&#x353" onClick="addcharacter(this.id)">&#x353;</td>
-					<td id="&#x354" onClick="addcharacter(this.id)">&#x354;</td>
-					<td id="&#x355" onClick="addcharacter(this.id)">&#x355;</td>
-					<td id="&#x356" onClick="addcharacter(this.id)">&#x356;</td>
-					<td id="&#x357" onClick="addcharacter(this.id)">&#x357;</td>
-					<td id="&#x358" onClick="addcharacter(this.id)">&#x358;</td>
-					<td id="&#x359" onClick="addcharacter(this.id)">&#x359;</td>
-					<td id="&#x35A" onClick="addcharacter(this.id)">&#x35A;</td>
-					<td id="&#x35B" onClick="addcharacter(this.id)">&#x35B;</td>
-					<td id="&#x35C" onClick="addcharacter(this.id)">&#x35C;</td>
-					<td id="&#x35D" onClick="addcharacter(this.id)">&#x35D;</td>
-					<td id="&#x35E" onClick="addcharacter(this.id)">&#x35E;</td>
-					<td id="&#x35F" onClick="addcharacter(this.id)">&#x35F;</td>
-				</tr>
-				<tr>
-					<td id="&#x360" onClick="addcharacter(this.id)">&#x360;</td>
-					<td id="&#x361" onClick="addcharacter(this.id)">&#x361;</td>
-					<td id="&#x362" onClick="addcharacter(this.id)">&#x362;</td>
-					<td id="&#x363" onClick="addcharacter(this.id)">&#x363;</td>
-					<td id="&#x364" onClick="addcharacter(this.id)">&#x364;</td>
-					<td id="&#x365" onClick="addcharacter(this.id)">&#x365;</td>
-					<td id="&#x366" onClick="addcharacter(this.id)">&#x366;</td>
-					<td id="&#x367" onClick="addcharacter(this.id)">&#x367;</td>
-					<td id="&#x368" onClick="addcharacter(this.id)">&#x368;</td>
-					<td id="&#x369" onClick="addcharacter(this.id)">&#x369;</td>
-					<td id="&#x36A" onClick="addcharacter(this.id)">&#x36A;</td>
-					<td id="&#x36B" onClick="addcharacter(this.id)">&#x36B;</td>
-					<td id="&#x36C" onClick="addcharacter(this.id)">&#x36C;</td>
-					<td id="&#x36D" onClick="addcharacter(this.id)">&#x36D;</td>
-					<td id="&#x36E" onClick="addcharacter(this.id)">&#x36E;</td>
-					<td id="&#x36F" onClick="addcharacter(this.id)">&#x36F;</td>
-				</tr>
-			</table>
-		</div>
-		
-		<div class="display">	
-			<p>
-				Current character: <span id="curchar"></span>
-			</p>
-			<p>
-			Alt. version: <span id="copydisplay"></span>
-			</p>
-		</div>
-	
-	</body>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  
+
+  
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="three columns">
+                <label for="textInput">Enter text you want to corrupt here:</label>
+            </div>
+            <div class="four columns">
+                        
+                <input type = "text" autocomplete=off id="textInput">
+            </div>
+            <div class="three columns">
+                Select a letter:
+                <br>
+               <h4> <div id="textOutput"> &nbsp; </div></h4>
+               
+            </div>
+        
+                
+            
+        </div>
+            
+        <div class="row">
+            <div class="seven columns">
+                <h4>        
+                    <div id="combinedCharArray"></div>
+                </h4> 
+
+            </div>
+            <div class="four columns ">
+                  Editting this letter:  
+                 
+                 <h1><div id="currentEditLetter"></div></h1>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/scripts.js"></script>
+    
+</body>
 </html>
