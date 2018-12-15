@@ -1,0 +1,8 @@
+.workArea{
+  width:80%;
+}
+.App{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
