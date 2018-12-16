@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Form,TextArea, Header } from "semantic-ui-react";
 import "./App.css";
 import AccordianText from "./components/AccordianText";
-
+import change from "./transforms/change.js";
 class App extends Component {
   constructor(props){
     super(props);
@@ -13,6 +13,8 @@ class App extends Component {
   
    setText = (e)=>{
     e.preventDefault();
+    console.log(change(e.target.value,"blackbubble"));
+    
     this.setState({
       text:e.target.value
     })
