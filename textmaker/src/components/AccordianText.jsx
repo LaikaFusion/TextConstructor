@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Accordion } from "semantic-ui-react";
+import StyleSelect from "./StyleSelect";
 
 export default class AccordianText extends Component {
   constructor(props){
@@ -28,14 +29,10 @@ export default class AccordianText extends Component {
           index={0}
           onClick={this.handleClick}
         >
-          What is a dog?
+          Full Word Editting
         </Accordion.Title>
         <Accordion.Content active={activeIndex === 0}>
-          <p>
-            A dog is a type of domesticated animal. Known for its loyalty and
-            faithfulness, it can be found as a welcome guest in many households
-            across the world.
-          </p>
+          <StyleSelect setFullText={this.props.setFullText}/>
         </Accordion.Content>
 
         <Accordion.Title
@@ -43,7 +40,7 @@ export default class AccordianText extends Component {
           index={1}
           onClick={this.handleClick}
         >
-          What kinds of dogs are there?
+          Individual Letter Edit
         </Accordion.Title>
         <Accordion.Content active={activeIndex === 1}>
           <p>

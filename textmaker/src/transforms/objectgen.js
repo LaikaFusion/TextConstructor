@@ -1,3 +1,5 @@
+//what this file does is generate a document called test.txt which you can use to make the change.js work. Makes it easier to add new alphabets
+
 var fs = require("fs");
 const text = {
   a: {  },
@@ -109,34 +111,33 @@ const strikethrough = [..."a̵b̵c̵d̵e̵f̵g̵h̵i̵j̵k̵l̵m̵n̵o̵p̵q̵r�
 const underline = [..."a͟b͟c͟d͟e͟f͟g͟h͟i͟j͟k͟l͟m͟n͟o͟p͟q͟r͟s͟t͟u͟v͟w͟x͟y͟z͟A͟B͟C͟D͟E͟F͟G͟H͟I͟J͟K͟L͟M͟N͟O͟P͟Q͟R͟S͟T͟U͟V͟W͟X͟Y͟Z͟.͟,͟[͟]͟(͟)͟{͟}͟?͟!͟'͟\"̲<͟>͟_͟\\͟/͟;͟`͟‿͟⁅͟∴͟0͟1͟2͟3͟4͟5͟6͟7͟8͟9͟"]
 const wizard = [..."ǟɮƈɖɛʄɢɦɨʝӄʟʍռօքզʀֆȶʊʋաӼʏʐǟɮƈɖɛʄɢɦɨʝӄʟʍռօքզʀֆȶʊʋաӼʏʐ.,[](){}?!'\"<>_\\/;`‿⁅∴0123456789"]
 const redacted = [..."██████████████████████████████████████████████████████████████████████████████████████"]
-const parenthesizes = [..."⒜⒝⒞⒟⒠⒡⒢⒣⒤⒥⒦⒧⒨⒩⒪⒫⒬⒭⒮⒯⒰⒱⒲⒳⒴⒵⒜⒝⒞⒟⒠⒡⒢⒣⒤⒥⒦⒧⒨⒩⒪⒫⒬⒭⒮⒯⒰⒱⒲⒳⒴⒵.,[](){}?!'\"<>_\\/;`‿⁅∴0⑴⑵⑶⑷⑸⑹⑺⑻⑼"]
+const parentheses = [..."⒜⒝⒞⒟⒠⒡⒢⒣⒤⒥⒦⒧⒨⒩⒪⒫⒬⒭⒮⒯⒰⒱⒲⒳⒴⒵⒜⒝⒞⒟⒠⒡⒢⒣⒤⒥⒦⒧⒨⒩⒪⒫⒬⒭⒮⒯⒰⒱⒲⒳⒴⒵.,[](){}?!'\"<>_\\/;`‿⁅∴0⑴⑵⑶⑷⑸⑹⑺⑻⑼"]
 const superscript = [..."ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖqʳˢᵗᵘᵛʷˣʸᶻᴬᴮᶜᴰᴱᶠᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾQᴿˢᵀᵁⱽᵂˣʸᶻ.,[](){}?!'\"<>_\\/;`‿⁅∴⁰¹²³⁴⁵⁶⁷⁸⁹"]
 const fullwidth = [..."ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ．，［］（）｛｝？！＇＼＂＜＞＿＼＼／；｀‿⁅∴０１２３４５６７８９"]
 const upsidedown = [..."68ㄥ59߈ƐᘔƖ0∵⁆⁀,؛\\/‾<>„,¡¿{}()[]'˙Z⅄XMΛ∩⊥SᴚტԀONW˥ꓘſIH⅁ℲƎᗡƆᗺ∀zʎxʍʌnʇsɹbdouɯןʞɾıɥƃɟǝpɔqɐ"].reverse();
-
+//make sure these match the names on the click page
 alphabet.forEach((e, i) => {
   text[e]["bubble"] = emojiUnicode(bubble[i]);
   text[e]["smallcaps"]=emojiUnicode(smallcaps[i]);
   text[e]["blackboardbold"]=emojiUnicode(blackboardbold[i]);
   text[e]["fraktur"]=emojiUnicode(fraktur[i]);
-  text[e]["boldfraktur"]=emojiUnicode(boldfraktur[i]);
-  text[e]["blackbubble"]=emojiUnicode(blackbubble[i]);
-  text[e]["boldscript"]=emojiUnicode(boldscript[i]);
+  text[e]["frakturbold"]=emojiUnicode(boldfraktur[i]);
+  text[e]["bubbleblack"]=emojiUnicode(blackbubble[i]);
+  text[e]["scriptbold"]=emojiUnicode(boldscript[i]);
   text[e]["script"]=emojiUnicode(script[i]);
   text[e]["bold"]=emojiUnicode(bold[i]);
   text[e]["italic"]=emojiUnicode(italic[i]);
-  text[e]["bolditalic"]=emojiUnicode(bolditalic[i]);
+  text[e]["italicbold"]=emojiUnicode(bolditalic[i]);
   text[e]["fairy"]=emojiUnicode(fairy[i]);
   text[e]["square"]=emojiUnicode(square[i]);
-  text[e]["blacksquare"]=emojiUnicode(blacksquare[i]);
+  text[e]["squareblack"]=emojiUnicode(blacksquare[i]);
   text[e]["russian"]=emojiUnicode(russian[i]);
   text[e]["japenese"]=emojiUnicode(japenese[i]);
-  text[e]["emoji"]=emojiUnicode(emoji[i]);
-  text[e]["strikethrough"]=emojiUnicode(strikethrough[i]);
-  text[e]["underline"]=emojiUnicode(underline[i]);
+  //the country code emojis are weird, taking out until I can figure out a good solution to this they basically add a zero join width which messes up the array iteration since there's now twice as many things
+  // text[e]["emoji"]=emojiUnicode(emoji[i]);
   text[e]["wizard"]=emojiUnicode(wizard[i]);
   text[e]["redacted"]=emojiUnicode(redacted[i]);
-  text[e]["parenthesizes"]=emojiUnicode(parenthesizes[i]);
+  text[e]["parentheses"]=emojiUnicode(parentheses[i]);
   text[e]["superscript"]=emojiUnicode(superscript[i]);
   text[e]["fullwidth"]=emojiUnicode(fullwidth[i]);
   text[e]["upsidedown"]=emojiUnicode(upsidedown[i]);
