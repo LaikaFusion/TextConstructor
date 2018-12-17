@@ -30,7 +30,10 @@ export default class StyleSelect extends Component {
             { ex: "卂", name: "Japenese" },
             { ex: "​█", name: "Redacted" },
             { ex: "Ꮧ", name: "Fairy" },
-            { ex: "ǟ", name: "wizard" }
+            { ex: "ǟ", name: "Wizard" },
+            { ex: "A̸̧̜̿̓̍̊̐͌ͣ", name: "Zalgo" },
+            { ex: "\u0391", name: "Random Homogylph" }
+
           ].map((e, i) => {
             return (
               <Grid.Column

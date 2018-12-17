@@ -19,6 +19,7 @@
 .selectDemo{
   font-size: 20px;
   margin-bottom: .5em;
+  white-space: nowrap;
 }
 .selectName{
   text-align: center;
@@ -41,7 +42,8 @@
 }
 .displayLetter{
   font-size:8vmax;
-  margin-top: 2vmax;
+  margin-top: 4vmax;
+  white-space: nowrap;
 }
 .comboDemo{
   margin-top:.3em;

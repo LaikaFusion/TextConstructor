@@ -3,9 +3,10 @@ import { Form, TextArea, Header } from "semantic-ui-react";
 import "./App.css";
 import AccordianText from "./components/AccordianText";
 import change from "./transforms/change.js";
-const GraphemeSplitter = require('grapheme-splitter')
+import homogylphs from "./transforms/homogylphs";
+const GraphemeSplitter = require("grapheme-splitter");
 
-const combos = require("./transforms/combining") 
+const combos = require("./transforms/combining");
 
 class App extends Component {
   constructor(props) {
@@ -16,14 +17,14 @@ class App extends Component {
       pwLetter: { char: "", pos: -1 }
     };
     this.splitter = new GraphemeSplitter();
-
   }
   //this is what runs when you type in the top text box
   textareaChange = e => {
     e.preventDefault();
     this.setState({
       orginalText: e.target.value,
-      text: e.target.value
+      text: e.target.value,
+      pwLetter: { char: "", pos: -1 }
     });
   };
   //this translates a string put into one using unicode
@@ -33,8 +34,33 @@ class App extends Component {
   //the top bit is to make it so the name on the page works as the key for requesting the change
   setFullText = type => {
     const strippedType = type.toLowerCase().replace(/\s+/g, "");
+    if (strippedType === "randomhomogylph") {
+      this.homogylphText();
+      return;
+    }
+    if (strippedType === "zalgo") {
+      this.zalgo();
+      return;
+    }
     this.setState({
       text: this.transformText(this.state.orginalText, strippedType)
+    });
+  };
+  homogylphText = () => {
+    this.setState({
+      text: homogylphs.gylphTransform(this.state.orginalText)
+    });
+  };
+  homogylphLetter = letter => {
+    if (this.state.pwLetter.char === "") {
+      return;
+    }
+    let splitStr = this.splitter.splitGraphemes(this.state.text);
+    splitStr[this.state.pwLetter.pos] = letter;
+    const changedPWL = { ...this.state.pwLetter, char: letter };
+    this.setState({
+      text: splitStr.join(""),
+      pwLetter: changedPWL
     });
   };
   setCurrentWorkingLetter = (letter, position) => {
@@ -42,33 +68,62 @@ class App extends Component {
       pwLetter: { char: letter, pos: position }
     });
   };
-  setLetter = type=>{
-    if(this.state.pwLetter.char===''){
+  setLetter = type => {
+    if (this.state.pwLetter.char === "") {
       return;
     }
     const strippedType = type.toLowerCase().replace(/\s+/g, "");
-    const newLetter = this.transformText(this.state.orginalText[this.state.pwLetter.pos], strippedType);
+    const newLetter = this.transformText(
+      this.state.orginalText[this.state.pwLetter.pos],
+      strippedType
+    );
     let splitStr = this.splitter.splitGraphemes(this.state.text);
     splitStr[this.state.pwLetter.pos] = newLetter;
-    const changedPWL = {...this.state.pwLetter, char:newLetter}
+    const changedPWL = { ...this.state.pwLetter, char: newLetter };
     this.setState({
-      text: splitStr.join(''),
+      text: splitStr.join(""),
       pwLetter: changedPWL
     });
-  }
-  decorateLetter=indexOfMark =>{
-    if(this.state.pwLetter.char===''){
+  };
+  decorateLetter = indexOfMark => {
+    if (this.state.pwLetter.char === "") {
       return;
     }
-    const newLetter =this.state.pwLetter.char + String.fromCodePoint(parseInt(combos.data.standard[indexOfMark],16));
-    let splitStr = this.splitter.splitGraphemes(this.state.text)
+    const newLetter =
+      this.state.pwLetter.char +
+      String.fromCodePoint(parseInt(combos.data.standard[indexOfMark], 16));
+    let splitStr = this.splitter.splitGraphemes(this.state.text);
     splitStr[this.state.pwLetter.pos] = newLetter;
-    const changedPWL = {...this.state.pwLetter, char:newLetter}
+    const changedPWL = { ...this.state.pwLetter, char: newLetter };
     this.setState({
-      text: splitStr.join(''),
+      text: splitStr.join(""),
       pwLetter: changedPWL
     });
-  }
+  };
+  //todo adapt the one on the actual site
+  zalgo = () => {
+    const zalgoedSTR = this.splitter
+      .splitGraphemes(this.state.orginalText)
+      .map((e, i) => {
+        for (
+          let index = 0;
+          index < Math.floor(Math.random() * (23 - 8 + 1) + 8);
+          index++
+        ) {
+          e =
+            `${e}${String.fromCodePoint(
+              parseInt(
+                combos.data.standard[Math.floor(Math.random() * combos.data.standard.length)],
+                16
+              )
+            )}`;
+        }
+        return e;
+      });
+      this.setState({
+        text: zalgoedSTR.join(""),
+      });
+  };
   render() {
     return (
       <div className="App">
@@ -84,15 +139,27 @@ class App extends Component {
           </Form>
           {/* This is one of the ways you can use multipoint unicode in an array */}
           <Header as="h1">
-            { this.splitter.splitGraphemes(this.state.text).map((e, i) => {
+            {this.splitter.splitGraphemes(this.state.text).map((e, i) => {
               return (
-                <span key={i} onClick={()=>{this.setCurrentWorkingLetter(e,i)}} className="singleChar">
+                <span
+                  key={i}
+                  onClick={() => {
+                    this.setCurrentWorkingLetter(e, i);
+                  }}
+                  className="singleChar"
+                >
                   {e}
                 </span>
               );
             })}
           </Header>
-          <AccordianText currentLetter={this.state.pwLetter.char} setLetter={this.setLetter} setFullText={this.setFullText} decorateLetter={this.decorateLetter} />
+          <AccordianText
+            currentLetter={this.state.pwLetter.char}
+            setLetter={this.setLetter}
+            setFullText={this.setFullText}
+            decorateLetter={this.decorateLetter}
+            homogylphLetter={this.homogylphLetter}
+          />
         </div>
       </div>
     );

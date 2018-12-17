@@ -51,7 +51,7 @@ Individual Letter Editting</Header>
           
           
         
-          <LetterSelect decorateLetter={this.props.decorateLetter} setLetter={this.props.setLetter} currentLetter={this.props.currentLetter}/>
+          <LetterSelect decorateLetter={this.props.decorateLetter} setLetter={this.props.setLetter} currentLetter={this.props.currentLetter} homogylphLetter={this.props.homogylphLetter}/>
         </Accordion.Content>
       </Accordion>
     );

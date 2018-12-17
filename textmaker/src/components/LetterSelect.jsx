@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Grid, Segment, Tab,Sticky } from "semantic-ui-react";
 const combos = require("../transforms/combining") 
+const {data} = require('../transforms/homogylphs')
 export default class LetterSelect extends Component {
   constructor(props) {
     super(props);
@@ -48,6 +49,22 @@ export default class LetterSelect extends Component {
                   </Grid.Column>
                 );
               })}
+              {
+                (data.hasOwnProperty(this.props.currentLetter))?
+                  data[this.props.currentLetter].map((e,i)=>{return(
+                    <Grid.Column
+                    onClick={() => {
+                      this.props.homogylphLetter(e);
+                    }}
+                    key={i}
+                    className="selectBox"
+                  >
+                    <div className="selectDemo">{e}</div>
+                    <div className="selectName">Homogylph</div>
+                  </Grid.Column>)
+                  })
+                :''
+              }
             </Grid>
           </Tab.Pane>
         )
