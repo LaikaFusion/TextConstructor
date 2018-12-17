@@ -1,12 +1,15 @@
 import React, { Component } from "react";
-import { Grid, Segment } from "semantic-ui-react";
-
+import { Grid, Segment, Tab,Sticky } from "semantic-ui-react";
+const combos = require("../transforms/combining") 
 export default class LetterSelect extends Component {
-  render() {
-    return (
-      <Grid columns={2}>
-        <Grid.Column width={12}>
-          <Segment>
+  constructor(props) {
+    super(props);
+    this.state={}
+    this.panes = [
+      {
+        menuItem: "Letter Transform",
+        render: () => (
+          <Tab.Pane>
             <Grid columns={6} doubling stretched>
               {[
                 { ex: "𝐀", name: "Bold" },
@@ -46,13 +49,50 @@ export default class LetterSelect extends Component {
                 );
               })}
             </Grid>
+          </Tab.Pane>
+        )
+      },
+      
+      {
+        menuItem: "Letter Decoration",
+        render: () => <Tab.Pane><Grid columns={8} doubling stretched>{combos.data.standard.map((e, i) => {
+          return (
+            <Grid.Column
+              onClick={() => {
+               this.props.decorateLetter(i)
+              }}
+              key={i}
+              className="selectBox"
+            >
+              <div className="comboDemo">{`◌${String.fromCodePoint(parseInt(e,16)) }`}</div>
+              
+            </Grid.Column>
+          );
+        })}</Grid></Tab.Pane>
+      },
+     
+    ];
+  }
+  handleContextRef = contextRef => this.setState({ contextRef })
+
+  render() {
+    const { contextRef } = this.state
+
+    return (
+      <Grid columns={2}>
+        <Grid.Column width={12}>
+          <Segment>
+            <Tab panes={this.panes} />
           </Segment>
         </Grid.Column>
         <Grid.Column width={4}>
+        <Sticky context={contextRef}>
+
           <Segment className="displayletterbox">
             <div className="displayTitle ">Currently Editing:</div>
             <div className="displayLetter">{this.props.currentLetter}</div>
           </Segment>
+          </Sticky>
         </Grid.Column>
       </Grid>
     );

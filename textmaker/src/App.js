@@ -3,6 +3,10 @@ import { Form, TextArea, Header } from "semantic-ui-react";
 import "./App.css";
 import AccordianText from "./components/AccordianText";
 import change from "./transforms/change.js";
+const GraphemeSplitter = require('grapheme-splitter')
+
+const combos = require("./transforms/combining") 
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -11,6 +15,8 @@ class App extends Component {
       orginalText: "",
       pwLetter: { char: "", pos: -1 }
     };
+    this.splitter = new GraphemeSplitter();
+
   }
   //this is what runs when you type in the top text box
   textareaChange = e => {
@@ -37,9 +43,25 @@ class App extends Component {
     });
   };
   setLetter = type=>{
+    if(this.state.pwLetter.char===''){
+      return;
+    }
     const strippedType = type.toLowerCase().replace(/\s+/g, "");
     const newLetter = this.transformText(this.state.orginalText[this.state.pwLetter.pos], strippedType);
-    let splitStr = [...this.state.text]
+    let splitStr = this.splitter.splitGraphemes(this.state.text);
+    splitStr[this.state.pwLetter.pos] = newLetter;
+    const changedPWL = {...this.state.pwLetter, char:newLetter}
+    this.setState({
+      text: splitStr.join(''),
+      pwLetter: changedPWL
+    });
+  }
+  decorateLetter=indexOfMark =>{
+    if(this.state.pwLetter.char===''){
+      return;
+    }
+    const newLetter =this.state.pwLetter.char + String.fromCodePoint(parseInt(combos.data.standard[indexOfMark],16));
+    let splitStr = this.splitter.splitGraphemes(this.state.text)
     splitStr[this.state.pwLetter.pos] = newLetter;
     const changedPWL = {...this.state.pwLetter, char:newLetter}
     this.setState({
@@ -62,7 +84,7 @@ class App extends Component {
           </Form>
           {/* This is one of the ways you can use multipoint unicode in an array */}
           <Header as="h1">
-            {[...this.state.text].map((e, i) => {
+            { this.splitter.splitGraphemes(this.state.text).map((e, i) => {
               return (
                 <span key={i} onClick={()=>{this.setCurrentWorkingLetter(e,i)}} className="singleChar">
                   {e}
@@ -70,7 +92,7 @@ class App extends Component {
               );
             })}
           </Header>
-          <AccordianText currentLetter={this.state.pwLetter.char} setLetter={this.setLetter} setFullText={this.setFullText} />
+          <AccordianText currentLetter={this.state.pwLetter.char} setLetter={this.setLetter} setFullText={this.setFullText} decorateLetter={this.decorateLetter} />
         </div>
       </div>
     );

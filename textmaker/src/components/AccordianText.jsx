@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Accordion,Header } from "semantic-ui-react";
+import { Accordion,Header,Icon } from "semantic-ui-react";
 import StyleSelect from "./StyleSelect";
 import LetterSelect from "./LetterSelect";
+
 
 export default class AccordianText extends Component {
   constructor(props){
@@ -9,6 +10,7 @@ export default class AccordianText extends Component {
     this.state ={
       activeIndex: -1 
     }
+   
   }
   
 
@@ -30,7 +32,8 @@ export default class AccordianText extends Component {
           index={0}
           onClick={this.handleClick}
         >
-          <Header size='large'>Full Word Editting</Header>
+          <Header size='large'>          <Icon name='dropdown' />
+Full Word Editting</Header>
         </Accordion.Title>
         <Accordion.Content active={activeIndex === 0}>
           <StyleSelect setFullText={this.props.setFullText}/>
@@ -41,10 +44,14 @@ export default class AccordianText extends Component {
           index={1}
           onClick={this.handleClick}
         >
-          <Header size='large'>Individual Letter Editting</Header>
+          <Header size='large'>          <Icon name='dropdown' />
+Individual Letter Editting</Header>
         </Accordion.Title>
         <Accordion.Content active={activeIndex === 1}>
-          <LetterSelect setLetter={this.props.setLetter} currentLetter={this.props.currentLetter}/>
+          
+          
+        
+          <LetterSelect decorateLetter={this.props.decorateLetter} setLetter={this.props.setLetter} currentLetter={this.props.currentLetter}/>
         </Accordion.Content>
       </Accordion>
     );
