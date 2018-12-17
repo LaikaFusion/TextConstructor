@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import { Accordion } from "semantic-ui-react";
+import { Accordion,Header } from "semantic-ui-react";
 import StyleSelect from "./StyleSelect";
+import LetterSelect from "./LetterSelect";
 
 export default class AccordianText extends Component {
   constructor(props){
     super(props)
     this.state ={
-      activeIndex: 0 
+      activeIndex: -1 
     }
   }
   
@@ -23,13 +24,13 @@ export default class AccordianText extends Component {
     const { activeIndex } = this.state;
 
     return (
-      <Accordion fluid>
+      <Accordion >
         <Accordion.Title
           active={activeIndex === 0}
           index={0}
           onClick={this.handleClick}
         >
-          Full Word Editting
+          <Header size='large'>Full Word Editting</Header>
         </Accordion.Title>
         <Accordion.Content active={activeIndex === 0}>
           <StyleSelect setFullText={this.props.setFullText}/>
@@ -40,14 +41,10 @@ export default class AccordianText extends Component {
           index={1}
           onClick={this.handleClick}
         >
-          Individual Letter Edit
+          <Header size='large'>Individual Letter Editting</Header>
         </Accordion.Title>
         <Accordion.Content active={activeIndex === 1}>
-          <p>
-            There are many breeds of dogs. Each breed varies in size and
-            temperament. Owners often select a breed of dog that they find to be
-            compatible with their own lifestyle and desires from a companion.
-          </p>
+          <LetterSelect setLetter={this.props.setLetter} currentLetter={this.props.currentLetter}/>
         </Accordion.Content>
       </Accordion>
     );

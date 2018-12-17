@@ -8,7 +8,8 @@ class App extends Component {
     super(props);
     this.state = {
       text: "",
-      orginalText: ""
+      orginalText: "",
+      pwLetter: { char: "", pos: -1 }
     };
   }
   //this is what runs when you type in the top text box
@@ -30,6 +31,22 @@ class App extends Component {
       text: this.transformText(this.state.orginalText, strippedType)
     });
   };
+  setCurrentWorkingLetter = (letter, position) => {
+    this.setState({
+      pwLetter: { char: letter, pos: position }
+    });
+  };
+  setLetter = type=>{
+    const strippedType = type.toLowerCase().replace(/\s+/g, "");
+    const newLetter = this.transformText(this.state.orginalText[this.state.pwLetter.pos], strippedType);
+    let splitStr = [...this.state.text]
+    splitStr[this.state.pwLetter.pos] = newLetter;
+    const changedPWL = {...this.state.pwLetter, char:newLetter}
+    this.setState({
+      text: splitStr.join(''),
+      pwLetter: changedPWL
+    });
+  }
   render() {
     return (
       <div className="App">
@@ -43,8 +60,17 @@ class App extends Component {
               placeholder="Enter text to edit here"
             />
           </Form>
-          <Header as="h1">{this.state.text}</Header>
-          <AccordianText setFullText={this.setFullText} />
+          {/* This is one of the ways you can use multipoint unicode in an array */}
+          <Header as="h1">
+            {[...this.state.text].map((e, i) => {
+              return (
+                <span key={i} onClick={()=>{this.setCurrentWorkingLetter(e,i)}} className="singleChar">
+                  {e}
+                </span>
+              );
+            })}
+          </Header>
+          <AccordianText currentLetter={this.state.pwLetter.char} setLetter={this.setLetter} setFullText={this.setFullText} />
         </div>
       </div>
     );
