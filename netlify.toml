@@ -1,0 +1,4 @@
+[build]
+  base    = "./textmaker"
+  publish = "./textmaker/build"
+  command = "yarn build"
