@@ -1,52 +1,91 @@
-.workArea{
-  width:80%;
-  height:100%;
-  box-sizing: border-box;
+body {
+  background-color: #f39237;
+  padding: 2em;
 }
-.App{
+.workArea {
+  width: 80%;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: white;
+  padding: 0 1.5em 1.5em;
+  border-radius: 5px;
+}
+.App {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.selectBox{
+.selectBox {
   border: 1px black solid;
   display: flex;
   justify-content: center;
   align-items: center;
-  height:5em !important;
+  height: 5em !important;
   cursor: pointer;
 }
-.selectDemo{
+.selectDemo {
   font-size: 20px;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
   white-space: nowrap;
 }
-.selectName{
+.selectName {
   text-align: center;
   word-wrap: break-word;
-  
 }
-.displayletterbox{
+.displayletterbox {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  height:15vmax;
-  max-height:13em;
+  height: 15vmax;
+  max-height: 13em;
 }
-.displayTitle{
+.displayTitle {
   text-align: center;
   word-wrap: break-word;
   font-weight: bold;
   font-size: 20px;
 }
-.displayLetter{
-  font-size:8vmax;
+.displayLetter {
+  font-size: 8vmax;
   margin-top: 4vmax;
   white-space: nowrap;
 }
-.comboDemo{
-  margin-top:.3em;
-  font-size:3em;
+.comboDemo {
+  margin-top: 0.3em;
+  font-size: 3em;
+}
+.textDisplay {
+  min-height: 2em;
+  word-wrap: break-word;
+  margin-top: -10px;
+  cursor: pointer;
+}
 
+#selected {
+  color: #f39237;
+}
+
+.gitRequest {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  margin-top: 2em;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2vmin;
+  font-weight: bold;
+}
+@media (max-width: 1130px) {
+  .center {
+    flex-direction: column;
+   
+  }
+}
+pre {
+  margin-top: 0em;
 }

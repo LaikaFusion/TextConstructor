@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Form, TextArea, Header } from "semantic-ui-react";
+import { Form, TextArea, Header,Segment,Icon } from "semantic-ui-react";
 import "./App.css";
 import AccordianText from "./components/AccordianText";
 import change from "./transforms/change.js";
 import homogylphs from "./transforms/homogylphs";
+import Title from "./components/Title";
 const GraphemeSplitter = require("grapheme-splitter");
 
 const combos = require("./transforms/combining");
@@ -110,24 +111,26 @@ class App extends Component {
           index < Math.floor(Math.random() * (23 - 8 + 1) + 8);
           index++
         ) {
-          e =
-            `${e}${String.fromCodePoint(
-              parseInt(
-                combos.data.standard[Math.floor(Math.random() * combos.data.standard.length)],
-                16
-              )
-            )}`;
+          e = `${e}${String.fromCodePoint(
+            parseInt(
+              combos.data.standard[
+                Math.floor(Math.random() * combos.data.standard.length)
+              ],
+              16
+            )
+          )}`;
         }
         return e;
       });
-      this.setState({
-        text: zalgoedSTR.join(""),
-      });
+    this.setState({
+      text: zalgoedSTR.join("")
+    });
   };
   render() {
     return (
       <div className="App">
         <div className="workArea">
+          <Title />
           <Form>
             <TextArea
               rows={1}
@@ -138,7 +141,10 @@ class App extends Component {
             />
           </Form>
           {/* This is one of the ways you can use multipoint unicode in an array */}
-          <Header as="h1">
+          
+          <Segment><div className="instructions">
+            Click a letter for individual editing:
+          </div><Header className="textDisplay" as="h1">
             {this.splitter.splitGraphemes(this.state.text).map((e, i) => {
               return (
                 <span
@@ -146,13 +152,14 @@ class App extends Component {
                   onClick={() => {
                     this.setCurrentWorkingLetter(e, i);
                   }}
+                  id={this.state.pwLetter.pos === i ? "selected" : ""}
                   className="singleChar"
                 >
                   {e}
                 </span>
               );
             })}
-          </Header>
+          </Header></Segment>
           <AccordianText
             currentLetter={this.state.pwLetter.char}
             setLetter={this.setLetter}
@@ -160,6 +167,8 @@ class App extends Component {
             decorateLetter={this.decorateLetter}
             homogylphLetter={this.homogylphLetter}
           />
+          <a href="https://github.com/LaikaFusion/ZalgoConstructor"><div className="gitRequest"><Icon name='github alternate' size="large" />Send Pull Requests!</div></a>
+          
         </div>
       </div>
     );
