@@ -37,8 +37,8 @@ body {
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  height: 15vmax;
-  max-height: 13em;
+  height:20em;
+  max-height: 40em;
 }
 .displayTitle {
   text-align: center;
@@ -50,6 +50,7 @@ body {
   font-size: 8vmax;
   margin-top: 4vmax;
   white-space: nowrap;
+  
 }
 .comboDemo {
   margin-top: 0.3em;
