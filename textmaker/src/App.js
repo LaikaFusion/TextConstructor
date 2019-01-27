@@ -12,6 +12,8 @@ import AccordianText from "./components/AccordianText";
 import change from "./transforms/change.js";
 import homogylphs from "./transforms/homogylphs";
 import Title from "./components/Title";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+
 const GraphemeSplitter = require("grapheme-splitter");
 
 const combos = require("./transforms/combining");
@@ -22,7 +24,8 @@ class App extends Component {
     this.state = {
       text: "",
       orginalText: "",
-      pwLetter: { char: "", pos: -1 }
+      pwLetter: { char: "", pos: -1 },
+      copied: false
     };
     this.splitter = new GraphemeSplitter();
   }
@@ -32,7 +35,8 @@ class App extends Component {
     this.setState({
       orginalText: e.target.value,
       text: e.target.value,
-      pwLetter: { char: "", pos: -1 }
+      pwLetter: { char: "", pos: -1 },
+      copied: false
     });
   };
   //this translates a string put into one using unicode
@@ -133,6 +137,21 @@ class App extends Component {
       text: zalgoedSTR.join("")
     });
   };
+  onCopy = () => {
+    if (this.state.text.length === 0) {
+      return;
+    }
+    this.setState(
+      {
+        copied: true
+      },
+      () => {
+        setTimeout(() => {
+          this.setState({ copied: false });
+        }, 5000);
+      }
+    );
+  };
   render() {
     return (
       <div className="App">
@@ -148,7 +167,7 @@ class App extends Component {
             />
           </Form>
           {/* This is one of the ways you can use multipoint unicode in an array */}
-          <br></br>
+          <br />
           <Segment attached>
             <div className="instructions">
               Click a letter for individual editing:
@@ -171,8 +190,10 @@ class App extends Component {
             </Header>
           </Segment>
           <Button.Group attached="bottom">
-            <Button>Copy</Button>
-            <Button>Clear</Button>
+            <CopyToClipboard onCopy={this.onCopy} text={this.state.text}>
+              <Button>{this.state.copied ? "Copied!" : "Copy"}</Button>
+            </CopyToClipboard>
+            <Button onClick={this.textareaChange}>Clear</Button>
           </Button.Group>
           <br />
           <AccordianText
