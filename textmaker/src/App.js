@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { Form, TextArea, Header,Segment,Icon } from "semantic-ui-react";
+import {
+  Form,
+  TextArea,
+  Header,
+  Segment,
+  Icon,
+  Button
+} from "semantic-ui-react";
 import "./App.css";
 import AccordianText from "./components/AccordianText";
 import change from "./transforms/change.js";
@@ -141,25 +148,33 @@ class App extends Component {
             />
           </Form>
           {/* This is one of the ways you can use multipoint unicode in an array */}
-          
-          <Segment><div className="instructions">
-            Click a letter for individual editing:
-          </div><Header className="textDisplay" as="h1">
-            {this.splitter.splitGraphemes(this.state.text).map((e, i) => {
-              return (
-                <span
-                  key={i}
-                  onClick={() => {
-                    this.setCurrentWorkingLetter(e, i);
-                  }}
-                  id={this.state.pwLetter.pos === i ? "selected" : ""}
-                  className="singleChar"
-                >
-                  {e}
-                </span>
-              );
-            })}
-          </Header></Segment>
+          <br></br>
+          <Segment attached>
+            <div className="instructions">
+              Click a letter for individual editing:
+            </div>
+            <Header className="textDisplay" as="h1">
+              {this.splitter.splitGraphemes(this.state.text).map((e, i) => {
+                return (
+                  <span
+                    key={i}
+                    onClick={() => {
+                      this.setCurrentWorkingLetter(e, i);
+                    }}
+                    id={this.state.pwLetter.pos === i ? "selected" : ""}
+                    className="singleChar"
+                  >
+                    {e}
+                  </span>
+                );
+              })}
+            </Header>
+          </Segment>
+          <Button.Group attached="bottom">
+            <Button>Copy</Button>
+            <Button>Clear</Button>
+          </Button.Group>
+          <br />
           <AccordianText
             currentLetter={this.state.pwLetter.char}
             setLetter={this.setLetter}
@@ -167,8 +182,12 @@ class App extends Component {
             decorateLetter={this.decorateLetter}
             homogylphLetter={this.homogylphLetter}
           />
-          <a href="https://github.com/LaikaFusion/ZalgoConstructor"><div className="gitRequest"><Icon name='github alternate' size="large" />Send Pull Requests!</div></a>
-          
+          <a href="https://github.com/LaikaFusion/ZalgoConstructor">
+            <div className="gitRequest">
+              <Icon name="github alternate" size="large" />
+              Send Pull Requests!
+            </div>
+          </a>
         </div>
       </div>
     );

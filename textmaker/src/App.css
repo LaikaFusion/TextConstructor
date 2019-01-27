@@ -81,6 +81,12 @@ body {
   font-size: 2vmin;
   font-weight: bold;
 }
+.ui.attached.segment {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+
+}
+
 @media (max-width: 1130px) {
   .center {
     flex-direction: column;
