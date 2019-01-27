@@ -191,9 +191,11 @@ class App extends Component {
           </Segment>
           <Button.Group attached="bottom">
             <CopyToClipboard onCopy={this.onCopy} text={this.state.text}>
-              <Button>{this.state.copied ? "Copied!" : "Copy"}</Button>
+             
+                {this.state.copied ?  <Button className="half" ><span id="one" className="animateText">Copied!</span></Button>: <Button  className="half" ><span id="two" >Copy</span></Button>}
+              
             </CopyToClipboard>
-            <Button onClick={this.textareaChange}>Clear</Button>
+            <Button className="half" onClick={this.textareaChange}>Clear</Button>
           </Button.Group>
           <br />
           <AccordianText

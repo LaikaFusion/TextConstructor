@@ -37,7 +37,7 @@ body {
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  height:20em;
+  height: 20em;
   max-height: 40em;
 }
 .displayTitle {
@@ -50,7 +50,6 @@ body {
   font-size: 8vmax;
   margin-top: 4vmax;
   white-space: nowrap;
-  
 }
 .comboDemo {
   margin-top: 0.3em;
@@ -84,15 +83,29 @@ body {
 .ui.attached.segment {
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
-
 }
-
+.animateText {
+  animation: fadeIn;
+  animation-duration: .5s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+}
+.half{
+  width: 50%;
+}
 @media (max-width: 1130px) {
   .center {
     flex-direction: column;
-   
   }
 }
 pre {
   margin-top: 0em;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
