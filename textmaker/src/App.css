@@ -1,9 +1,9 @@
 body {
   background-color: #f39237;
-  padding: 2em;
+  padding: 2vmin;
 }
 .workArea {
-  width: 80%;
+  width: 80vw;
   height: 100%;
   box-sizing: border-box;
   background-color: white;
@@ -32,12 +32,16 @@ body {
   text-align: center;
   word-wrap: break-word;
 }
+.stuck {
+  position: sticky !important;
+  top: 20px;
+}
 .displayletterbox {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  height: 25vh;
+  /* height: 23vmin; */
   /* max-height: 40em; */
 }
 .displayTitle {
@@ -47,8 +51,9 @@ body {
   font-size: 1.2em;
 }
 .displayLetter {
-  font-size: 8vmax;
-  margin-top: 4vmax;
+  font-size: 8vmin;
+  line-height: 8vmin;
+  margin: 1vmin 0;
   white-space: nowrap;
 }
 .comboDemo {
@@ -65,7 +70,10 @@ body {
 #selected {
   color: #f39237;
 }
-
+.titleWord {
+  margin-right: 1em;
+  height: 8vmin;
+}
 .gitRequest {
   display: flex;
   justify-content: center;
@@ -79,6 +87,9 @@ body {
   align-items: center;
   font-size: 2vmin;
   font-weight: bold;
+  height: 100%;
+  line-height: 3vmin;
+  margin-bottom: 2vmin;
 }
 .ui.attached.segment {
   border-top-left-radius: inherit;
@@ -86,17 +97,44 @@ body {
 }
 .animateText {
   animation: fadeIn;
-  animation-duration: .5s;
+  animation-duration: 0.5s;
   animation-iteration-count: 1;
   animation-timing-function: ease-in;
 }
-.half{
+.half {
   width: 50%;
+}
+.ui.stretched.grid>.column>*{
+  flex-grow:0;
 }
 @media (max-width: 1130px) {
   .center {
     flex-direction: column;
+    margin: 1em 0;
   }
+
+  .wrapped {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .workArea {
+    padding: 0 0.7em 0.7em;
+  }
+  .stuck{
+    width: 100% !important;
+  }
+}
+@media (max-width: 768px) {
+    .ui.stackable.grid {
+    flex-direction: column-reverse !important;
+    justify-content: center;
+    align-items: center;
+  }
+  .ui.grid>.stackable.stackable.row>.column, .ui.stackable.grid>.column.grid>.column, .ui.stackable.grid>.column.row>.column, .ui.stackable.grid>.column:not(.row), .ui.stackable.grid>.row>.column, .ui.stackable.grid>.row>.wide.column, .ui.stackable.grid>.wide.column{
+    padding:.5em 0 !important;
+  }
+
 }
 pre {
   margin: 0em;
