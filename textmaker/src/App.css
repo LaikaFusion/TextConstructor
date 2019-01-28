@@ -20,7 +20,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 5em !important;
+  height: 6em !important;
   cursor: pointer;
 }
 .selectDemo {
@@ -37,14 +37,14 @@ body {
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  height: 20em;
-  max-height: 40em;
+  height: 25vh;
+  /* max-height: 40em; */
 }
 .displayTitle {
   text-align: center;
   word-wrap: break-word;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 1.2em;
 }
 .displayLetter {
   font-size: 8vmax;
@@ -99,7 +99,7 @@ body {
   }
 }
 pre {
-  margin-top: 0em;
+  margin: 0em;
 }
 @keyframes fadeIn {
   from {
