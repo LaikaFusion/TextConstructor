@@ -31,7 +31,7 @@ export default class AccordianText extends Component {
         >
           <Header size="large">
             <Icon name="dropdown" />
-            Full Word Editting
+            Full Word Editing
           </Header>
         </Accordion.Title>
         <Accordion.Content active={activeIndex === 0}>
@@ -45,7 +45,7 @@ export default class AccordianText extends Component {
         >
           <Header size="large">
             <Icon name="dropdown" />
-            Individual Letter Editting
+            Individual Letter Editing
           </Header>
         </Accordion.Title>
         <Accordion.Content active={activeIndex === 1}>
